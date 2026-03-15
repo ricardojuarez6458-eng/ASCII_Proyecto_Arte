@@ -1,0 +1,301 @@
+"""
+Generador de Arte ASCII Animado
+Proyecto de Animación
+
+Equipo:
+- Fatima: - Menú y Patrones Geométricos
+- Raul: - Generadores de Texto Artístico
+- Ricardo: - Animaciones
+
+Universidad de Guadalajara - CUGDL
+"""
+
+# ============================================
+# MENÚ PRINCIPAL
+# ============================================
+
+def mostrar_menu_principal():
+    print("\n" + "="*60)
+    print(" GALERÍA DE ARTE ASCII")
+    print("     Creado por: Ricardo,Raul y Fatima")
+    print("="*60)
+    print("\nGALERÍA:")
+    print("1. Patrones Geométricos")
+    print("2. Generador de Banner")
+    print("3. Marcos Decorativos")
+    print("4. Animaciones")
+    print("5. Tabla de Multiplicar Visual")
+    print("6. Salir")
+    print("-"*60)
+
+
+# ============================================
+# PATRONES GEOMÉTRICOS
+# ============================================
+
+def triangulo(altura):
+    for i in range(1, altura + 1):
+        print("*" * i)
+
+
+def cuadrado(lado):
+    for i in range(lado):
+        if i == 0 or i == lado - 1:
+            print("*" * lado)
+        else:
+            print("*" + " " * (lado - 2) + "*")
+
+
+def piramide(altura):
+    for i in range(1, altura + 1):
+        espacios = " " * (altura - i)
+        estrellas = "*" * (2*i - 1)
+        print(espacios + estrellas)
+
+
+def menu_patrones():
+
+    while True:
+
+        print("\n--- PATRONES GEOMÉTRICOS ---")
+        print("1. Triángulo")
+        print("2. Cuadrado")
+        print("3. Pirámide")
+        print("4. Volver")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            altura = int(input("Altura del triángulo: "))
+            triangulo(altura)
+
+        elif opcion == "2":
+            lado = int(input("Tamaño del cuadrado: "))
+            cuadrado(lado)
+
+        elif opcion == "3":
+            altura = int(input("Altura de la pirámide: "))
+            piramide(altura)
+
+        elif opcion == "4":
+            break
+
+        else:
+            print("❌ Opción inválida")
+
+
+# ============================================
+# TEXTO ARTÍSTICO
+# ============================================
+
+def generar_banner(texto):
+
+    ancho = len(texto) + 10
+
+    print("╔" + "═"*ancho + "╗")
+    print("║" + " "*ancho + "║")
+    print("║" + texto.center(ancho) + "║")
+    print("║" + " "*ancho + "║")
+    print("╚" + "═"*ancho + "╝")
+
+
+def marco_decorativo(texto, estilo):
+
+    ancho = len(texto) + 4
+
+    if estilo == 1:
+        print("╔" + "═"*ancho + "╗")
+        print("║ " + texto + " ║")
+        print("╚" + "═"*ancho + "╝")
+
+    elif estilo == 2:
+        print("★"* (ancho+2))
+        print("★ " + texto + " ★")
+        print("★"* (ancho+2))
+
+    elif estilo == 3:
+        print("#"* (ancho+2))
+        print("# " + texto + " #")
+        print("#"* (ancho+2))
+
+    else:
+        print("Estilo no válido")
+
+
+def tabla_multiplicar_visual(numero):
+
+    print("╔════════════════════╗")
+    print(f"║  TABLA DEL {numero}           ║")
+    print("╠════════════════════╣")
+
+    for i in range(1, 11):
+        resultado = numero * i
+        print(f"║ {numero} x {i:2} = {resultado:3}      ║")
+
+    print("╚════════════════════╝")
+
+
+def menu_texto_artistico():
+
+    while True:
+
+        print("\n--- TEXTO ARTÍSTICO ---")
+        print("1. Crear Banner")
+        print("2. Marco Decorativo")
+        print("3. Tabla de Multiplicar")
+        print("4. Volver")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+
+            texto = input("Ingrese el texto: ")
+            generar_banner(texto)
+
+        elif opcion == "2":
+
+            texto = input("Texto: ")
+            print("Estilo 1 | Estilo 2 | Estilo 3")
+            estilo = int(input("Seleccione estilo: "))
+
+            marco_decorativo(texto, estilo)
+
+        elif opcion == "3":
+
+            numero = int(input("Número para la tabla: "))
+            tabla_multiplicar_visual(numero)
+
+        elif opcion == "4":
+            break
+
+        else:
+            print("❌ Opción inválida")
+
+
+# ============================================
+# ANIMACIONES
+# ============================================
+
+def crear_retraso(duracion):
+
+    for _ in range(duracion * 200000):
+        pass
+
+
+def barra_progreso():
+
+    print("\nProcesando...")
+
+    total = 20
+
+    for i in range(total + 1):
+
+        llenos = "■" * i
+        vacios = "-" * (total - i)
+
+        porcentaje = int((i / total) * 100)
+
+        print(f"[{llenos}{vacios}] {porcentaje}%", end="\r")
+
+        crear_retraso(5)
+
+    print(f"[{'■'*total}] 100% ¡Completo!")
+
+
+def animacion_texto_movil():
+
+    texto = input("Ingrese el texto que desea animar: ")
+
+    for i in range(30):
+
+        print(" " * i + texto, end="\r")
+
+        crear_retraso(5)
+
+    print()
+
+
+
+def menu_animaciones():
+
+    while True:
+
+        print("\n--- ANIMACIONES ---")
+        print("1. Barra de Progreso")
+        print("2. Texto en Movimiento")
+        print("3. Volver")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            barra_progreso()
+
+        elif opcion == "2":
+            animacion_texto_movil()
+
+        elif opcion == "3":
+            break
+
+        else:
+            print("❌ Opción inválida")
+
+
+# ============================================
+# FUNCIONES AUXILIARES
+# ============================================
+
+def pausar():
+    input("\nPresione Enter para continuar...")
+
+
+# ============================================
+# PROGRAMA PRINCIPAL
+# ============================================
+
+def main():
+
+    print("╔════════════════════════════════════════════════════════════╗")
+    print("║           ¡Bienvenido a la Galería de Arte ASCII!         ║")
+    print("╚════════════════════════════════════════════════════════════╝")
+
+    continuar = True
+
+    while continuar:
+
+        mostrar_menu_principal()
+
+        opcion = input("Seleccione una opción (1-6): ")
+
+        if opcion == "1":
+            menu_patrones()
+
+        elif opcion == "2":
+            texto = input("Ingrese texto para el banner: ")
+            generar_banner(texto)
+
+        elif opcion == "3":
+            menu_texto_artistico()
+
+        elif opcion == "4":
+            menu_animaciones()
+
+        elif opcion == "5":
+            numero = int(input("Número para tabla de multiplicar: "))
+            tabla_multiplicar_visual(numero)
+
+        elif opcion == "6":
+
+            print("\nGracias por usar la Galería de Arte ASCII")
+            continuar = False
+
+        else:
+            print("❌ Opción inválida")
+
+        if continuar:
+            pausar()
+
+    print("\nPrograma terminado.")
+
+
+if __name__ == "__main__":
+    main()

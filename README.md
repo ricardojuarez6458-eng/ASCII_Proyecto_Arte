@@ -6,8 +6,8 @@ Proyecto de programación que genera arte ASCII y animaciones en la terminal usa
 ## Integrantes
 
 - Ricardo Juárez
-- Nombre compañero
-- Nombre compañero
+-Fatima Guadalupe Estrella Salazar
+- Raul Nuño Morales
 
 ## Descripción
 
